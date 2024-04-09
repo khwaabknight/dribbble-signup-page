@@ -1,0 +1,35 @@
+{
+    "title": "Design Resources",
+    "links":[
+        {
+            "id": "footerlink-7-1",
+            "text": "Freelancing",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-7-2",
+            "text": "Design Hiring",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-7-3",
+            "text": "Design Portfolio",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-7-4",
+            "text": "Design Education",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-7-5",
+            "text": "Creative Process",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-7-6",
+            "text": "Design Industry Trends",
+            "url": "#"
+        }
+    ]
+}

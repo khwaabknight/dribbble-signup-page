@@ -12,7 +12,7 @@ import SignUpStep4 from './components/SignUp/SignUpStep4';
 
 function App() {
 
-    const [step, setStep] = useState(4);
+    const [step, setStep] = useState(1);
     const { register, formState: { errors }, getValues, setError, clearErrors, watch } = useForm<FieldValues>({
         defaultValues: {
             name: '',
@@ -23,6 +23,7 @@ function App() {
             accountType: '',
         }
     });
+    
     const [avatar, setAvatar] = useState<File | null>(null);
 
     const signUpHandler = () => {
@@ -97,7 +98,7 @@ function App() {
                 {
                     step === 4 &&
                     <section>
-                        <SignUpStep4 />
+                        <SignUpStep4 email={getValues().email} />
                     </section>
                 }
 

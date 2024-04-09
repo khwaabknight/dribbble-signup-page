@@ -1,0 +1,20 @@
+{
+    "title": "Hire designers",
+    "links":[
+        {
+            "id": "footerlink-2-1",
+            "text": "Post a job opening",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-2-2",
+            "text": "Post a freelance project",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-2-3",
+            "text": "Search for designers",
+            "url": "#"
+        }
+    ]
+}

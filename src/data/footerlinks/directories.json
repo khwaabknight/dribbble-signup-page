@@ -1,0 +1,30 @@
+{
+    "title": "Directories",
+    "links":[
+        {
+            "id": "footerlink-5-1",
+            "text": "Design jobs",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-5-2",
+            "text": "Designers for hire",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-5-3",
+            "text": "Freelance designers for hire",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-5-4",
+            "text": "Tags",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-5-5",
+            "text": "places",
+            "url": "#"
+        }
+    ]
+}

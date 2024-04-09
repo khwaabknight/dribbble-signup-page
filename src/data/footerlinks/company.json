@@ -1,0 +1,50 @@
+{
+    "title": "Company",
+    "links":[
+        {
+            "id": "footerlink-4-1",
+            "text": "About",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-2",
+            "text": "Careers",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-3",
+            "text": "Support",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-4",
+            "text": "Media kit",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-5",
+            "text": "Testimonials",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-6",
+            "text": "API",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-7",
+            "text": "Terms of service",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-8",
+            "text": "Privacy policy",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-4-9",
+            "text": "Cookie policy",
+            "url": "#"
+        }
+    ]
+}

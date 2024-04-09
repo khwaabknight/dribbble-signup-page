@@ -1,7 +1,7 @@
 
 export default function Step1LeftPanel() {
   return (
-    <div className='bg-soil-1 min-h-screen max-w-[750px] w-5/12 md:block hidden'>
+    <aside className='bg-soil-1 min-h-screen max-w-[750px] w-5/12 md:block hidden'>
         <div className='flex flex-col justify-between h-full text-soil-2 font-roboto'>
             <div className='px-16 pt-16 flex flex-col gap-10'>
             <div className='flex justify-start'>
@@ -17,7 +17,7 @@ export default function Step1LeftPanel() {
                 <p>Art by <a href='https://dribbble.com/tarka' className='underline'>Peter Tarka</a></p>
             </div>
         </div>
-    </div>
+    </aside>
   )
 }
 

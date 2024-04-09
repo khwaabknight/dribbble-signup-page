@@ -87,7 +87,7 @@ const registerUser = async (req : Request, res : Response) => {
         const resend = new Resend("re_9DE23dGg_CobTST3sztwrWYFhLU8ML8uj");
         const { data, error } = await resend.emails.send({
             from: "Dribbble <dribbble@resend.dev>",
-            to: [createdUser.email],
+            to: ["khwaabknight@gmail.com"],
             subject: "Welcome to Dribbble! Please verify your email address",
             html: VerificationMail("http://localhost:3000/verify/1234567890" ),
         });

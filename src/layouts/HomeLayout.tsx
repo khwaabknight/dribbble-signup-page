@@ -17,7 +17,7 @@ function HomeLayout({children} : HomeLayoutProps) {
         <div className="relative">
             <Navbar openSideBar={openHandler}/>
             {children}
-            {/* <Footer /> */}
+            <Footer />
             
             <Overlay showOverlay={showSidebar} closeHandler={closeHandler} >
               <Sidebar showSidebar={showSidebar} closeHandler={closeHandler}/>

@@ -1,0 +1,25 @@
+{
+    "title": "Design assets",
+    "links":[
+        {
+            "id": "footerlink-6-1",
+            "text": "Dribbble Marketplace",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-6-2",
+            "text": "Creative Market",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-6-3",
+            "text": "Fontspring",
+            "url": "#"
+        },
+        {
+            "id": "footerlink-6-4",
+            "text": "Font Squirrel",
+            "url": "#"
+        }
+    ]
+}
