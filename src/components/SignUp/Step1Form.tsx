@@ -2,29 +2,25 @@ import { useState } from 'react';
 import Button from '../common/Button'
 import axios from 'axios';
 import Input from '../common/Input';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldErrors, FieldValues, UseFormClearErrors, UseFormGetValues, UseFormRegister, UseFormSetError } from 'react-hook-form';
 
 type SignUpStep1FormProps = {
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors<FieldValues>;
     successHandler: () => void;
+    getValues: UseFormGetValues<FieldValues>;
+    setError:UseFormSetError<FieldValues>;
+    clearErrors: UseFormClearErrors<FieldValues>;
 }
 
-function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
-
+function SignUpStep1Form({register, errors, successHandler,getValues, setError, clearErrors}: SignUpStep1FormProps) {
 
     const [signupErrorMessage, setSignupErrorMessage] = useState('')
-    const { register, handleSubmit, formState: { errors }, getValues, setError, clearErrors } = useForm<FieldValues>({
-        defaultValues: {
-            name: '',
-            username: '',
-            email: '',
-            password: '',
-        }
-    });
-    const values = getValues();
 
-    const onCreateAccount = () => {
-        console.log(values)
-        axios.post(`${import.meta.env.VITE_APP_BASE_URL}/api/auth/register`, {
+    const onCreateAccount = (e:any) => {
+        e.preventDefault()
+        const values = getValues()
+        axios.post(`${import.meta.env.VITE_APP_BASE_URL}/api/auth/checkExistingUser`, {
             username : values.username,
             email : values.email,        
         }).then((response) => {
@@ -34,7 +30,6 @@ function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
             clearErrors('email');
             clearErrors('username');
         }).catch((error:any) => {
-            console.log(error);
             setError('email', {type: 'manual', message: error.message})
             setError('username', {type: 'manual', message: error.message})            
             setSignupErrorMessage(error.message); // set error message
@@ -42,7 +37,7 @@ function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
     }
 
   return (
-    <form onSubmit={handleSubmit(onCreateAccount)} className='w-full flex items-center min-h-screen'>
+    <form onSubmit={onCreateAccount} className='w-full flex items-center min-h-screen'>
         <div className='absolute top-5 right-5 md:block hidden'>
             {/* replace with Link from react-router */}
             <p>Already a member <a href='#' className='text-link'>Sign In</a></p>
@@ -54,7 +49,7 @@ function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
             {/* api error message */}
             {signupErrorMessage && <li className='text-error'>{signupErrorMessage}</li>}
 
-            <div className='flex w-full gap-x-3'>
+            <div className='flex sm:flex-row flex-col w-full gap-y-8'>
                 {/* name */}
                 <Input 
                     type="text" 
@@ -100,7 +95,7 @@ function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
                 errors={errors} 
                 name='password' 
                 required 
-                minLength={6} 
+                minLength={6}
                 widthFull
             />
 
@@ -115,7 +110,8 @@ function SignUpStep1Form({successHandler}: SignUpStep1FormProps) {
             </label>
 
             <div>
-                <Button type="submit" primary className='text-lg font-medium' onClick={onCreateAccount}>Create Account</Button>
+                <Button type="submit" primary className='text-lg font-medium'
+                >Create Account</Button>
             </div>
 
             <div className='max-w-[300px]'>

@@ -1,6 +1,8 @@
 import { Request, Response } from "express"
 import User from "../models/User"
 import { uploadFile } from "../utils/uploadFileToCloudinary"
+import { Resend } from "resend"
+import { VerificationMail } from "../mailTemplates/sendVerificationMail"
 
 
 
@@ -35,12 +37,13 @@ const registerUser = async (req : Request, res : Response) => {
     // create user object - create entry in db
     // remove password and refresh token field from response
     // check for user creation
+    // send email verification
     // return res
 
     const { name, email, username, password, location, accountType } = req.body;
-    const file = req.files ? (Array.isArray(req.files.image) ? req.files.image[0] : req.files.image) : null;
+    const file = req.files ? (Array.isArray(req.files.avatar) ? req.files.avatar[0] : req.files.avatar) : null;
     console.log(req.body);
-    console.log(file);
+    console.log(req.files);
 
     if ([ name, email, username, password, location, accountType ].some((field) => field?.trim() === "")) {
         return res.status(400).json({ message: "All fields are required" })
@@ -80,7 +83,22 @@ const registerUser = async (req : Request, res : Response) => {
         if (!createdUser) {
             return res.status(500).json({ message: "Something went wrong while registering the user" })
         }
-        return res.status(201).json({message: "User registered Successfully", user: createdUser})
+
+        const resend = new Resend("re_9DE23dGg_CobTST3sztwrWYFhLU8ML8uj");
+        const { data, error } = await resend.emails.send({
+            from: "Dribbble <dribbble@resend.dev>",
+            to: [createdUser.email],
+            subject: "Welcome to Dribbble! Please verify your email address",
+            html: VerificationMail("http://localhost:3000/verify/1234567890" ),
+        });
+        console.log("email data",data)
+        console.log("email error",error)
+    
+        if (error) {
+            return res.status(400).json({ error });
+        }
+        return res.status(201).json({message: "User registered Successfully", data: data})
+        // return res.status(201).json({message: "User registered Successfully", user: createdUser})
 
     } catch (error) {
         return res.status(500).json({ message: "Something went wrong while registering the user" })
@@ -103,7 +121,7 @@ const checkExistingUser = async (req : Request, res : Response) => {
         if (userWithEmail) {
             return res.status(409).json({ message: "Email already exists" })
         }
-        return res.status(200).json({ message: "Username and email are is available" })
+        return res.status(200).json({ message: "Username and email are available" })
     } catch (error) {
         console.log("Something went wrong while checking the username : ", error);
         return res.status(500).json({ message: "Internal Server" })

@@ -7,3 +7,5 @@ type FormInputs = {
     location: string,
     accountType: string,
 }
+
+type accountType = 'DESIGNER' | 'EMPLOYER' | 'USER'
